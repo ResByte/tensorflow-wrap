@@ -51,4 +51,4 @@ def batch_norm_layer(input,size_out,layer_name = 'bn'):
 ```
 
 ## Tensorboard Output
-![tensorboard visualization](imgs/img1.png)
+![tensorboard visualization](img1.png)
