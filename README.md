@@ -43,7 +43,9 @@ def batch_norm_layer(input,size_out,layer_name = 'bn'):
     beta = tf.Variable(tf.constant(0.0, shape = [size_out]),name = 'beta', trainable = True)
     gamma = tf.Variable(tf.constant(1.0, shape = [size_out]),name = 'gamma', trainable = True)
     mean, variance = tf.nn.moments(input, [0, 1, 2])
-    tf.summary.histogram("batch_norm_beta", beta)
-    tf.summary.histogram("batch_norm_gamme", gamma)
+    tf.summary.histogram("beta", beta)
+    tf.summary.histogram("gamma", gamma)
+    tf.summary.histogram("mean", mean)
+    tf.summary.histogram("var", variance)
 return tf.nn.batch_normalization(input, mean, variance, beta, gamma, variance_epsilon=0.0001)
 ```
