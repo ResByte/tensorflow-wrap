@@ -1,6 +1,22 @@
 # Tensorflow-Wrap
 
-TF has several wrappers such as keras, tf.contrib.slim etc. This is not to replace them, but some helper function to write code faster in TF only environments and also to fully utilize Tensorboard. 
+TF has several wrappers such as keras, tf.contrib.slim etc. This is not to replace them, but some helper function to write code faster in TF only environments and also to fully utilize Tensorboard(from TF-dev summit Feb,2017).  
+
+```python
+# combine all summaries 
+summ = tf.summary.merge_all()
+
+# write summaries to file
+writer = tf.summary.FileWriter(filename)
+writer.add_graph(sess.graph) # adds graph too
+
+
+# when run session 
+...
+...,s = sess.run([..., summ], feed_dict=...)
+writer.add_summary(s, count)
+```
+
 
 ## Conv Layer 
 Use this to write a convolution layer with name space. It is very useful for plotting graphs in tensorboard. 
