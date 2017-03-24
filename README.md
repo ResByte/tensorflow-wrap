@@ -1,6 +1,6 @@
 # Tensorflow-Wrap
 
-TF has several wrappers such as keras, tf.contrib.slim etc. This is not to replace them, but some helper funciton to write code faster in TF only environments and also to fully utilize Tensorboard. 
+TF has several wrappers such as keras, tf.contrib.slim etc. This is not to replace them, but some helper function to write code faster in TF only environments and also to fully utilize Tensorboard. 
 
 ## Conv Layer 
 Use this to write a convolution layer with name space. It is very useful for plotting graphs in tensorboard. 
@@ -32,4 +32,18 @@ def fc_layer(input, size_in, size_out, layer_name="fc"):
     tf.summary.histogram("biases", b)
     tf.summary.histogram("activations", act)
     return act
+```
+
+## Batch Norm 
+Batch-Normalization Layer with trainable parameters.
+
+```python 
+def batch_norm_layer(input,size_out,layer_name = 'bn'):
+  with tf.name_scope(layer_name):
+    beta = tf.Variable(tf.constant(0.0, shape = [size_out]),name = 'beta', trainable = True)
+    gamma = tf.Variable(tf.constant(1.0, shape = [size_out]),name = 'gamma', trainable = True)
+    mean, variance = tf.nn.moments(input, [0, 1, 2])
+    tf.summary.histogram("batch_norm_beta", beta)
+    tf.summary.histogram("batch_norm_gamme", gamma)
+return tf.nn.batch_normalization(input, mean, variance, beta, gamma, variance_epsilon=0.0001)
 ```
