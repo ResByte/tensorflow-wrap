@@ -47,5 +47,5 @@ def batch_norm_layer(input,size_out,layer_name = 'bn'):
     tf.summary.histogram("gamma", gamma)
     tf.summary.histogram("mean", mean)
     tf.summary.histogram("var", variance)
-return tf.nn.batch_normalization(input, mean, variance, beta, gamma, variance_epsilon=0.0001)
+    return tf.nn.batch_normalization(input, mean, variance, beta, gamma, variance_epsilon=0.0001, name = 'op')
 ```
