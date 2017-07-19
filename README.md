@@ -68,3 +68,24 @@ def batch_norm_layer(input,size_out,layer_name = 'bn'):
 
 ## Tensorboard Output
 ![tensorboard visualization](img1.png)
+
+## Other Tensorflow Musings 
+
+### Using convolution with initialization 
+Instead of using conv2d as shown, there is more simpler way of writing conv2d layer as 
+```python
+conv2d_layer = tf.contrib.layers.conv2d(inputs,num_outputs,kernel_size, scope)
+```
+More details for this can be found [here](https://www.tensorflow.org/api_docs/python/tf/contrib/layers/conv2d)
+As can be seen, there is already an `xavier_initializer` as well as activation with `relu`. This gives code simpler to read. 
+
+### Print trainable variables 
+There is no model printing function(as same as keras). So while using pure tensorflow, there are some prinitng capabilities in `tensorflow.contrib.slim`  as 
+```python
+init = tf.global_variables_initializer()
+sess.init()
+variables = tf.model_variables()
+tf.contrib.slim.model_analyzer.analyze_vars(variables, print_info=True)
+```
+
+
