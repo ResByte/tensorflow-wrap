@@ -1,4 +1,5 @@
 # Tensorflow-Wrap
+(Tested on TF:1.2.0)
 
 TF has several wrappers such as keras, tf.contrib.slim etc. This is not to replace them, but some helper function to write code faster in TF only environments and also to fully utilize Tensorboard(from TF-dev summit Feb,2017).  
 
