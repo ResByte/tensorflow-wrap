@@ -72,6 +72,9 @@ def batch_norm_layer(input,size_out,layer_name = 'bn'):
 
 ## Other Tensorflow Musings 
 
+### Reset Graph in Jupyter
+Using multiple graphs in a jupyter notebook may case overwriting or changes. Use `tf.reset_default_graph()` before initializing new graph. 
+
 ### Using convolution with initialization 
 Instead of using conv2d as shown, there is more simpler way of writing conv2d layer as 
 ```python
